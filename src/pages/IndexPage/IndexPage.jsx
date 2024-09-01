@@ -1,11 +1,11 @@
 import { Section, Cell, Image, List } from '@telegram-apps/telegram-ui';
-import type { FC } from 'react';
 
-import { Link } from '@/components/Link/Link.tsx';
+
+import { Link } from '@/components/Link/Link.jsx';
 
 import tonSvg from './ton.svg';
 
-export const IndexPage: FC = () => {
+export const IndexPage = () => {
   return (
     <List>
       <Section
@@ -33,6 +33,9 @@ export const IndexPage: FC = () => {
         </Link>
         <Link to='/theme-params'>
           <Cell subtitle='Telegram application palette information'>Theme Parameters</Cell>
+        </Link>
+        <Link to='/newuser-params'>
+          <Cell subtitle='Telegram application palette information'>New User Params</Cell>
         </Link>
       </Section>
     </List>

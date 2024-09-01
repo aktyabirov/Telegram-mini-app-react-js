@@ -1,10 +1,10 @@
 import { classNames, useUtils } from '@telegram-apps/sdk-react';
-import { type FC, type MouseEventHandler, useCallback } from 'react';
-import { Link as RouterLink, type LinkProps } from 'react-router-dom';
+import { useCallback } from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 
 import './Link.css';
 
-export const Link: FC<LinkProps> = ({
+export const Link = ({
   className,
   onClick: propsOnClick,
   to,
@@ -12,12 +12,12 @@ export const Link: FC<LinkProps> = ({
 }) => {
   const utils = useUtils();
 
-  const onClick = useCallback<MouseEventHandler<HTMLAnchorElement>>((e) => {
+  const onClick = useCallback((e) => {
     propsOnClick?.(e);
 
     // Compute if target path is external. In this case we would like to open link using
     // TMA method.
-    let path: string;
+    let path;
     if (typeof to === 'string') {
       path = to;
     } else {

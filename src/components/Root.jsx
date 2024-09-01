@@ -1,11 +1,11 @@
 import { SDKProvider, useLaunchParams } from '@telegram-apps/sdk-react';
 import { TonConnectUIProvider } from '@tonconnect/ui-react';
-import { type FC, useEffect, useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 
-import { App } from '@/components/App.tsx';
-import { ErrorBoundary } from '@/components/ErrorBoundary.tsx';
+import { App } from '@/components/App.jsx';
+import { ErrorBoundary } from '@/components/ErrorBoundary.jsx';
 
-const ErrorBoundaryError: FC<{ error: unknown }> = ({ error }) => (
+const ErrorBoundaryError = ({ error }) => (
   <div>
     <p>An unhandled error occurred:</p>
     <blockquote>
@@ -20,7 +20,7 @@ const ErrorBoundaryError: FC<{ error: unknown }> = ({ error }) => (
   </div>
 );
 
-const Inner: FC = () => {
+const Inner = () => {
   const debug = useLaunchParams().startParam === 'debug';
   const manifestUrl = useMemo(() => {
     return new URL('tonconnect-manifest.json', window.location.href).toString();
@@ -42,7 +42,7 @@ const Inner: FC = () => {
   );
 };
 
-export const Root: FC = () => (
+export const Root = () => (
   <ErrorBoundary fallback={ErrorBoundaryError}>
     <Inner/>
   </ErrorBoundary>

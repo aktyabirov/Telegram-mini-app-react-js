@@ -10,13 +10,13 @@ import {
   Text,
   Title,
 } from '@telegram-apps/telegram-ui';
-import type { FC } from 'react';
 
-import { DisplayData } from '@/components/DisplayData/DisplayData.tsx';
+
+import { DisplayData } from '@/components/DisplayData/DisplayData.jsx';
 
 import './TONConnectPage.css';
 
-export const TONConnectPage: FC = () => {
+export const TONConnectPage = () => {
   const wallet = useTonWallet();
   const utils = useUtils();
 

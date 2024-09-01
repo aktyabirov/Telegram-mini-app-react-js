@@ -7,9 +7,10 @@ import {
   useMiniApp,
   useThemeParams,
   useViewport,
+  postEvent
 } from '@telegram-apps/sdk-react';
 import { AppRoot } from '@telegram-apps/telegram-ui';
-import { type FC, useEffect, useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import {
   Navigate,
   Route,
@@ -17,9 +18,9 @@ import {
   Routes,
 } from 'react-router-dom';
 
-import { routes } from '@/navigation/routes.tsx';
+import { routes } from '@/navigation/routes.jsx';
 
-export const App: FC = () => {
+export const App = () => {
   const lp = useLaunchParams();
   const miniApp = useMiniApp();
   const themeParams = useThemeParams();
@@ -48,6 +49,9 @@ export const App: FC = () => {
     navigator.attach();
     return () => navigator.detach();
   }, [navigator]);
+
+  postEvent('web_app_expand');
+  postEvent('web_app_setup_closing_behavior',{need_confirmation: true} );
 
   return (
     <AppRoot

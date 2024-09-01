@@ -1,29 +1,16 @@
 import { isRGB } from '@telegram-apps/sdk-react';
 import { Cell, Checkbox, Section } from '@telegram-apps/telegram-ui';
-import type { FC, ReactNode } from 'react';
+import React from 'react';
 
-import { RGB } from '@/components/RGB/RGB.tsx';
-import { Link } from '@/components/Link/Link.tsx';
+import { RGB } from '@/components/RGB/RGB.jsx';
+import { Link } from '@/components/Link/Link.jsx';
 
 import './DisplayData.css';
 
-export type DisplayDataRow =
-  & { title: string }
-  & (
-  | { type: 'link'; value?: string }
-  | { value: ReactNode }
-  )
-
-export interface DisplayDataProps {
-  header?: ReactNode;
-  footer?: ReactNode;
-  rows: DisplayDataRow[];
-}
-
-export const DisplayData: FC<DisplayDataProps> = ({ header, rows }) => (
+export const DisplayData = ({ header, rows }) => (
   <Section header={header}>
     {rows.map((item, idx) => {
-      let valueNode: ReactNode;
+      let valueNode;
 
       if (item.value === undefined) {
         valueNode = <i>empty</i>;
